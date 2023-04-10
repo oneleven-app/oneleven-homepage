@@ -7,8 +7,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
 
-    
+    <script>
+  window.kakaoAsyncInit = function() {
+    Kakao.Channel.createChatButton({
+      container: '#kakao-talk-channel-chat-button',
+    });
+  };
 
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.channel.min.js';
+    js.integrity = 'sha384-MEvxc+j9wOPB2TZ85/N6G3bt3K1/CgHSGNSM+88GoytFuzP4C9szmANjTCNfgKep';
+    js.crossOrigin = 'anonymous';
+    fjs.parentNode.insertBefore(js, fjs);
+  })(document, 'script', 'kakao-js-sdk');
+</script>
     <style>
         body {
             background-color: #002512;
@@ -97,7 +112,18 @@
 </head>
 <body>
 <div class="image-container">
+       
     <img id="logo" src="images/logo.jpg" alt="Your Image" />
+    <div
+  id="kakao-talk-channel-chat-button"
+  data-channel-public-id="_ylMDxj"
+  data-title="consult"
+  data-size="large"
+  data-color="mono"
+  data-shape="mobile"
+  data-support-multiple-densities="true"
+  style="text-align:center;"
+></div> 
     <img src="images/image-1.jpg" alt="Your Image" />
     <img src="images/image-2.jpg" alt="Your Image" />
     <img src="images/image-5.jpg" alt="Your Image" />
@@ -118,6 +144,12 @@
     let windowHeight = window.innerHeight;
     let halfWindowHeight = windowHeight / 4;
     element.style.marginTop = halfWindowHeight + 'px';
+
+   function chatChannel() {
+    Kakao.Channel.chat({
+      channelPublicId: '_ylMDxj',
+    });
+  } 
 </script>
 
 </html>
